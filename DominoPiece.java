@@ -1,14 +1,12 @@
 
 public class DominoPiece {
 
-    private int playerID;
     private int pieceNo;
     private int available;
     private int left;
     private int right;
 
     public DominoPiece(int pieceNo, int left, int right) {
-        playerID = 0;
         this.available = 1;
         this.pieceNo = pieceNo;
         this.left = left;
@@ -21,6 +19,12 @@ public class DominoPiece {
 
     public void setAvailable(int n) {
         available = n;
+    }
+
+    public void flipPiece() {
+        int temp = left;
+        left = right;
+        right = temp;
     }
 
     public String toString() {
