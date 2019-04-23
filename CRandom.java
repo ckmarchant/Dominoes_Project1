@@ -23,7 +23,7 @@ public class CRandom{
    
       for(int j = 10; i < 20; i++)
       {
-         p1Hand.add(dList.get(i));
+         p2Hand.add(dList.get(i));
       } 
    
       for(int j = 20; i < 28; i++)
