@@ -3,7 +3,7 @@ public class CPlayer extends CRandom{
 
    Random r = new Random();
    int player1Turn = r.nextInt(2);
-   ArrayList<Integer> playedPieces = new ArrayList<Integer>();
+   ArrayList<Dominoes> playedPieces = new ArrayList<Dominoes>();
    int choice = -1;
    public void CPlayer()
    {
@@ -40,10 +40,15 @@ public class CPlayer extends CRandom{
 
       return choice; 
    }
-   
+
    public void setDomino()
    {
       if (playedPieces.isEmpty()) playedPieces.add(choice);
+      else {
+
+      }
+      }
    }
+
 
 }
