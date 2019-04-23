@@ -1,4 +1,4 @@
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 
 public class Dominoes {
@@ -35,6 +35,12 @@ public class Dominoes {
         return stock;
     }
 
+    public DominoPiece getDominoPiece(int id) {
+        DominoPiece domino = stock.get(id);
+        domino.setAvailable(0);
+        return domino;
+    }
+
     public String toString() {
         StringBuilder str = new StringBuilder();
         for(DominoPiece domino: stock)
@@ -44,6 +50,6 @@ public class Dominoes {
 
     public static void main(String[] args) {
         Dominoes dominoes = new Dominoes();
-        System.out.println(dominoes.getAvailablePieces());
+        System.out.print(dominoes);
     }
 }
