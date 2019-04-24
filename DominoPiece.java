@@ -1,10 +1,10 @@
 
-public class DominoPiece {
+public class DominoPiece extends Dominoes{
 
     private int pieceNo;
     private int available;
-    private int left;
-    private int right;
+    protected int left;
+    protected int right;
 
     public DominoPiece(int pieceNo, int left, int right) {
         this.available = 1;
@@ -21,10 +21,11 @@ public class DominoPiece {
         available = n;
     }
 
-    public void flipPiece() {
+    public DominoPiece flipPiece(DominoPiece d) {
         int temp = left;
-        left = right;
-        right = temp;
+        d.left = right;
+        d.right = temp;
+        return d;
     }
 
     public String toString() {

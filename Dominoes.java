@@ -1,7 +1,7 @@
 
 import java.util.ArrayList;
 
-public class Dominoes {
+public class Dominoes{
 
     private ArrayList<DominoPiece> stock;
 
