@@ -1,23 +1,23 @@
 
 import java.util.ArrayList;
 
-public class Dominoes{
-
+public class Dominoes
+{
     private ArrayList<DominoPiece> stock;
 
     public Dominoes() {
-        int pieceID = 1;
+        int pieceNo = 1;
         stock = new ArrayList<DominoPiece>();
         for(int i = 0; i <= 6; i++) {
             for(int j = i; j < 7; j++) {
-                if (i == 0) stock.add(new DominoPiece(pieceID, j, j));
-                if (i == 1) stock.add(new DominoPiece(pieceID, j, j - 1));
-                if (i == 2) stock.add(new DominoPiece(pieceID, j, j - 2));
-                if (i == 3) stock.add(new DominoPiece(pieceID, j, j - 3));
-                if (i == 4) stock.add(new DominoPiece(pieceID, j, j - 4));
-                if (i == 5) stock.add(new DominoPiece(pieceID, j, j - 5));
-                if (i == 6) stock.add(new DominoPiece(pieceID, j, j - 6));
-                pieceID++;
+                if(i == 0) stock.add(new DominoPiece(pieceNo, j, j));
+                if(i == 1) stock.add(new DominoPiece(pieceNo, j, j - 1));
+                if(i == 2) stock.add(new DominoPiece(pieceNo, j, j - 2));
+                if(i == 3) stock.add(new DominoPiece(pieceNo, j, j - 3));
+                if(i == 4) stock.add(new DominoPiece(pieceNo, j, j - 4));
+                if(i == 5) stock.add(new DominoPiece(pieceNo, j, j - 5));
+                if(i == 6) stock.add(new DominoPiece(pieceNo, j, j - 6));
+                pieceNo++;
             }
         }
     }
@@ -48,8 +48,18 @@ public class Dominoes{
         return str.toString();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         Dominoes dominoes = new Dominoes();
-        System.out.print(dominoes);
+//        System.out.print(dominoes + "\n");
+//
+//        dominoes.getDominoPiece(1).setAvailable(0);
+//        dominoes.getDominoPiece(3).setAvailable(0);
+//        dominoes.getDominoPiece(5).setAvailable(0);
+//        dominoes.getDominoPiece(7).setAvailable(0);
+//        dominoes.getDominoPiece(9).setAvailable(0);
+//
+//        System.out.print(dominoes.getAvailablePieces());
     }
 }
+

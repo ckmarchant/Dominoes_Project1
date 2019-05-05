@@ -1,10 +1,11 @@
+
 import java.util.*;
 
 public class CRandom{
 
-      ArrayList<Integer> p1Hand = new ArrayList<Integer>();
-      ArrayList<Integer> p2Hand = new ArrayList<Integer>();
-      ArrayList<Integer> remainder = new ArrayList<Integer>();
+      protected ArrayList<Integer> p1Hand = new ArrayList<Integer>();
+      protected ArrayList<Integer> p2Hand = new ArrayList<Integer>();
+      protected ArrayList<Integer> remainder = new ArrayList<Integer>();
    public void CRandom()
    {  
 
@@ -33,21 +34,19 @@ public class CRandom{
    }
 
 
-   public ArrayList<Integer> getHand1()
+   protected ArrayList<Integer> getHand1()
    {
       return p1Hand;
    }
 
-   public ArrayList<Integer> getHand2()
+   protected ArrayList<Integer> getHand2()
    {
       return p2Hand;
    }
 
 
-   public ArrayList<Integer> getRemainder()
+   protected ArrayList<Integer> getRemainder()
    {
       return remainder;
    }
-
-
 }

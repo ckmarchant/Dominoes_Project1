@@ -1,11 +1,16 @@
-import java.util.*;
-public class CPlayer extends CRandom{
 
+import java.util.Random;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class CPlayer extends CRandom {
+   
+   CRandom cr = new CRandom();
    Random r = new Random();
    boolean player1Turn = r.nextBoolean(); 
    ArrayList<DominoPiece> playedPieces = new ArrayList<DominoPiece>();
-   DominoPiece dom = new DominoPiece(-1,-1,-1);
-   DominoPiece lastPc = new DominoPiece(-1,-1,-1);
+   DominoPiece dom = null;
+   DominoPiece lastPc = null;
    private int choice = -1;
    
    Scanner userIn = new Scanner(System.in);
@@ -13,27 +18,41 @@ public class CPlayer extends CRandom{
    {
       boolean playable = false;
          
-      if(player1Turn && lastPc != new DominoPiece(-1,-1,-1))
+      if(player1Turn && lastPc != null)
       {
          for(int i = 0; i < p1Hand.size(); i++)
          {
-            if(lastPc.right == dom.getDominoPiece(p1Hand.get(i)).left || lastPc.right == dom.getDominoPiece(p1Hand.get(i)).right)
+            if(lastPc.getRight() == dom.getDominoPiece(p1Hand.get(i)).left || lastPc.getRight() == dom.getDominoPiece(p1Hand.get(i)).right)
             {
                playable = true;
                break;
             }
          }
-         if(!playable)
+        
+      }
+      else if(!player1Turn && lastPc != null)
+      {
+         for(int i = 0; i < p2Hand.size(); i++)
          {
-            System.out.println("You have no playable pieces. Take a piece from the stock and end your turn.");
-            
-            int piece = userIn.nextInt();
-            
-            if(player1Turn) p1Hand.add(remainder.get(remainder.indexOf(piece)));
-            else p2Hand.add(remainder.get(remainder.indexOf(piece)));
-         
-            player1Turn = !player1Turn;
+            if(lastPc.getRight() == dom.getDominoPiece(p2Hand.get(i)).left || lastPc.getRight() == dom.getDominoPiece(p2Hand.get(i)).right)
+            {
+               playable = true;
+               break;
+            }
          }
+      
+      }
+   
+      if(!playable)
+      {
+         System.out.println("You have no playable pieces. Take a piece from the stock and end your turn.");
+            
+         int piece = userIn.nextInt();
+            
+         if(player1Turn) p1Hand.add(remainder.get(remainder.indexOf(piece)));
+         else p2Hand.add(remainder.get(remainder.indexOf(piece)));
+         
+         player1Turn = !player1Turn;
       }
    }
 
@@ -67,26 +86,41 @@ public class CPlayer extends CRandom{
       else  
       {
          lastPc = playedPieces.get(playedPieces.size());
-         if(lastPc.right == dom.getDominoPiece(choice).left) 
+         if(lastPc.getRight() == dom.getDominoPiece(choice).left)
          {
             playedPieces.add(dom.getDominoPiece(choice));
-            p1Hand.remove(new Integer(choice));
-            p2Hand.remove(new Integer(choice));
+            p1Hand.remove(choice);
+            p2Hand.remove(choice);
             player1Turn = !player1Turn;
          }
          
-         else if(lastPc.right == dom.getDominoPiece(choice).right)
+         else if(lastPc.getRight() == dom.getDominoPiece(choice).right)
          {
             playedPieces.add(dom.flipPiece(dom.getDominoPiece(choice)));
-            p1Hand.remove(new Integer(choice));
-            p2Hand.remove(new Integer(choice));
+            p1Hand.remove(choice);
+            p2Hand.remove(choice);
             player1Turn = !player1Turn;
          }
          else System.out.println("The chosen domino can't be connected to the last domino. Choose a different one.");
       }
       for(int i = 0; i < playedPieces.size(); i++)
       {
-         System.out.println"The currently played dominoes: " + (playedPieces.get(i).toString());
+         System.out.println("The currently played dominoes: " + (playedPieces.get(i).toString()));
+      }
+   }
+   public void checkWinner() 
+   {
+      int winner = 0;
+      
+      if(p1Hand.size() == 0)
+      {
+         System.out.println("Player 1 wins! Congratulations!");
+         System.exit(0);
+      }
+      if(p2Hand.size() == 0)
+      {
+         System.out.println("Player 2 wins! Congratulations!");
+         System.exit(0);
       }
    }
 
